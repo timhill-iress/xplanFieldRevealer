@@ -7,14 +7,14 @@
     "build-css": "node ./node_modules/css-minify/bin/css-minify.js --file xplanFieldRevealer.css",
     "build-dev-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js dev-bookmarklet.js ./dist/dev-bookmarklet.html --demo",
     "build-prod-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js prod-bookmarklet.js --demo  ./dist/prod-bookmarklet.html",
-    "embed":"node ./embedCss.js",
-    "build":"npm run build-css && npm run embed && npm run build-dev-bookmarklet && npm run build-prod-bookmarklet"
-
+    "embed": "node ./embedCss.js",
+    "build": "npm run build-css && npm run embed && npm run build-dev-bookmarklet && npm run build-prod-bookmarklet"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "bookmarklet": "^1.0.4",
-    "css-minify": "^1.0.1"
+    "css-minify": "^1.0.1",
+    "marked": "^0.7.0"
   }
 }
