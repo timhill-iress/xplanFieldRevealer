@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      html,body,div { margin: 0; padding: 0; font: normal 16px/24px Helvetica Neue, Helvetica, sans-serif; color: #333; }
+      #main { max-width: 630px; margin: 3em auto; }
+      .bookmarklet { display: inline-block; padding: .5em 1em; color: #fff; background: #50dcf3; border-radius: 4px; text-decoration: none; }
+      a { color: #50dcf3; }
+      .dim { color: #999; }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1>Xplan Field Revealer</h1>
+      <p>
+        Drag this button to your bookmarks bar to save it as a bookmarklet:
+      </p>
+      <p>
+        <a class="bookmarklet" href="javascript:(function()%7B%22use%20strict%22%3Bif(!document.getElementById(%22bookmarklet__style_4d42c66%22))%7Bvar%20link%3Ddocument.createElement(%22link%22)%3Blink.id%3D%22bookmarklet__style_4d42c66%22%2Clink.rel%3D%22stylesheet%22%2Clink.href%3D%22http%3A%2F%2F127.0.0.1%3A5500%2FxplanFieldRevealer.css%22%2Cdocument.body.appendChild(link)%7D%22use%20strict%22%3Bfunction%20callback()%7B%7Dvar%20s%3Ddocument.createElement(%22script%22)%3Bs.addEventListener%3Fs.addEventListener(%22load%22%2Ccallback%2C!1)%3As.readyState%26%26(s.onreadystatechange%3Dcallback)%2Cs.src%3D%22http%3A%2F%2F127.0.0.1%3A5500%2FxplanFieldRevealer.js%22%2Cdocument.body.appendChild(s)%3B%7D)()">Xplan Field Revealer</a>
+      </p>
+      
+      <p class="dim">This page was created with the <a href="https://github.com/mrcoles/bookmarklet">bookmarklet</a> npm library.</p>
+    </div>
+  </body>
+</html>

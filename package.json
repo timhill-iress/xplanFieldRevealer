@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build-css": "node ./node_modules/css-minify/bin/css-minify.js --file xplanFieldRevealer.css",
-    "build-dev-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js dev-bookmarklet.js --demo > dist/dev-demo.html",
-    "build-prod-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js prod-bookmarklet.js --demo > dist/prod-demo.html",
+    "build-dev-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js dev-bookmarklet.js ./dist/dev-bookmarklet.html --demo",
+    "build-prod-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js prod-bookmarklet.js --demo  ./dist/prod-bookmarklet.html",
     "embed":"node ./embedCss.js",
-    "build":"npm run build-css && npm run embed && npm run build-dev-bookmarklet"
+    "build":"npm run build-css && npm run embed && npm run build-dev-bookmarklet && npm run build-prod-bookmarklet"
 
   },
   "author": "",

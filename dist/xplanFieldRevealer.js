@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Xplan Field Revealor
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Helps Xplan user determine the xplan field names. This is useful when using the API or Xmerge
 // @author       Tim Hill
 // @match        https://*.xplan.iress.co.uk/*
+// @downloadURL  https://raw.githack.com/timhill-iress/xplanFieldRevealer/master/dist/xplanFieldRevealer.js
 // @grant        none
 // ==/UserScript==
 
@@ -49,23 +50,28 @@
     function findGroupName(el) {
         //Find parent form
         var form = el.form;
-        var groupName;
+        var name = null;
         //Various ways to guess at the groupname
         //look for a hidden field with name list_name
         if (form) {
-            groupName = jQuery(form).find("input:hidden[name=list_name]").val();
-            if (!groupName) {
-
+            var listName = jQuery(form).find("input:hidden[name=list_name]").val();
+            if (!listName) {
                 if (form.name == "editclient") {
-                    groupName = "entity"
+                    name = "entity"
                 }
-
+            }else{
+                name = listName;
             }
+            var groupName = jQuery(form).find("input:hidden[name=group_name]").val();
+            if( groupName && name){
+                name += "_" + groupName;
+            }
+
         }
-        if (groupName && !groupName.startsWith("entity")) {
-            groupName = "entity_" + groupName;
+        if (name && !name.startsWith("entity")) {
+            name = "entity_" + name;
         }
-        return groupName;
+        return name;
     }
 
 
