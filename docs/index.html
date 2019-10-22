@@ -1,5 +1,36 @@
-<h1 id="xplanfieldrevealer">xplanFieldRevealer</h1>
+<h1 id="xplanfieldrevealer">XplanFieldRevealer</h1>
 <p>A simple javascript file that can be used to help determine Xplan field names.</p>
 <h2 id="setup-instructions">Setup instructions</h2>
-<p><a href="TamperMonkey.html">Tampermonkey instructions</a> for developers that may wish to contribute to improving this project.</p>
-<p><a href="bookmarklet.html">Bookmarklet instructions</a> for users that just want it to work.</p>
+<p>There are two mechanisms for setting up the Xplan Field Revealer:</p>
+<ul>
+<li><p><a href="bookmarklet.html">Bookmarklet instructions</a> for users that just want it to work, and want to be more in control. The javascript code will only run when you click on the bookmarklet. This option is the recommended options for the majority of users.</p>
+</li>
+<li><p><a href="TamperMonkey.html">Tampermonkey instructions</a> for developers that may wish to contribute to improving this project. This provides a mechanism to update and improve the javascript code.</p>
+</li>
+</ul>
+<p>Both options allow for auto-updating. I feel this is the best option for most users, although I&#39;m considering a bookmarklet that doesn&#39;t update for users that would rather know what code is being run in their browser.</p>
+<h2 id="how-does-it-work">How does it work?</h2>
+<p>The XplanFieldRevealer inspects clues in the html to determine the Xplan internal fieldname, and the Xplan group name. Specifically, it looks at the names of input controls for clues on the field names, and at hidden inputs and form attributes for group name information.</p>
+<h2 id="does-it-work-on-all-xplan-screens">Does it work on all Xplan screens?</h2>
+<p>No, there are only limited Xplan screens where it works.</p>
+<ol>
+<li>It must be an Edit screen.</li>
+<li>It must not be a popup dialog.</li>
+<li>It only works on entity and list based screens, in the simplest terms, if a screen is based on fields that you see in Field Defintions it will probably work. This includes screens such as:<ul>
+<li>client data screens, </li>
+<li>asset data screens, </li>
+<li>liability data screens,</li>
+<li>insurance data screens,</li>
+<li>pension data screens,</li>
+<li>custom screens</li>
+</ul>
+</li>
+<li>It will specifically, not work on portfolio screens, or workflow screens (threads, tasks, cases, leads etc).</li>
+</ol>
+<p>Based on my experience, the screens it works on are the ones where people most often struggle to determine field names.</p>
+<h2 id="how-to-use-the-bookmarklet-version">How to use the bookmarklet version.</h2>
+<p>When on an Xplan edit screen, click the bookmarklet that you installed. The bookmarklet will looks for clues in the html and display the information below each field where it can determine field infomation.</p>
+<h2 id="how-to-use-the-tampermonkey-version">How to use the TamperMonkey version.</h2>
+<p>By default the script will run on all Xplan screens for all Xplan sites matching the domain <strong>*.xplan.iress.co.uk</strong>. If your Xplan site is in another region or has a vanity/custom domain then you will need to change the TamperMonkey options to make it work for your site.</p>
+<h2 id="github-repository">Github repository</h2>
+<p><a href="https://github.com/timhill-iress/xplanFieldRevealer">Github Repo</a></p>
