@@ -5,10 +5,18 @@
   "main": "index.js",
   "scripts": {
     "build-css": "node ./node_modules/css-minify/bin/css-minify.js --file xplanFieldRevealer.css",
+    "embed-css": "node ./embedCss.js",
+    
     "build-dev-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js dev-bookmarklet.js ./dist/dev-bookmarklet.html --demo",
     "build-prod-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js prod-bookmarklet.js --demo  ./dist/prod-bookmarklet.html",
-    "embed": "node ./embedCss.js",
-    "build": "npm run build-css && npm run embed && npm run build-dev-bookmarklet && npm run build-prod-bookmarklet"
+    "build-bookmarklets": "npm run build-dev-bookmarklet && npm run build-prod-bookmarklet",
+
+    "build-docs1": "node ./node_modules/marked/bin/marked -i docs/index.md -o ./docs/index.html",
+    "build-docs2": "node ./node_modules/marked/bin/marked -i docs/TamperMonkey.md -o ./docs/TamperMonkey.html",
+    "build-docs": "npm run build-docs1 && npm run build-docs2",
+
+
+    "build": "npm run build-css && npm run embed-css && npm run build-bookmarklets && npm run build-docs"
   },
   "author": "",
   "license": "ISC",
