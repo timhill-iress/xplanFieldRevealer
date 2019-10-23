@@ -6,9 +6,9 @@ layout: default
 
 There are two mechanisms for setting up the Xplan Field Revealer:
 
-* [Bookmarklet instructions](bookmarklet.html) for users that just want it to work, and want to be more in control. The javascript code will only run when you click on the bookmarklet. This option is the recommended options for the majority of users.
+* [Bookmarklet instructions](./bookmarklet.html) for users that just want it to work, and want to be more in control. The javascript code will only run when you click on the bookmarklet. This option is the recommended options for the majority of users.
 
-* [Tampermonkey instructions](TamperMonkey.html) for developers that may wish to contribute to improving this project. This provides a mechanism to update and improve the javascript code.
+* [Tampermonkey instructions](./TamperMonkey.html) for developers that may wish to contribute to improving this project. This provides a mechanism to update and improve the javascript code.
 
 Both options allow for auto-updating. I feel this is the best option for most users, although I'm considering a bookmarklet that doesn't update for users that would rather know what code is being run in their browser.
 
