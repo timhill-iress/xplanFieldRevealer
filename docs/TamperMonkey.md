@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 ## Tampermonkey
 
 The Tampermonkey plugin is available for several broswers, details here https://www.tampermonkey.net/
