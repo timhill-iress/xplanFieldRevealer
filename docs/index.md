@@ -2,6 +2,16 @@
 layout: default
 ---
 
+The Xplan Field Revealer adds fields information to Xplan edit screens.
+
+**It transforms this**
+
+![before](./before.png "Before")
+
+**Into this**
+
+![after](./after.png "After")
+
 ## Setup instructions
 
 There are two mechanisms for setting up the Xplan Field Revealer:
@@ -39,7 +49,3 @@ When on an Xplan edit screen, click the bookmarklet that you installed. The book
 ## How to use the TamperMonkey version.
 
 By default the script will run on all Xplan screens for all Xplan sites matching the domain ***.xplan.iress.co.uk**. If your Xplan site is in another region or has a vanity/custom domain then you will need to change the TamperMonkey options to make it work for your site.
-
-
-## Github repository
-[Github Repo](https://github.com/timhill-iress/xplanFieldRevealer)
