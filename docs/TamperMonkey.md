@@ -26,6 +26,6 @@ The Tampermonkey plugin is available for several broswers, details here https://
     ![step 4](TM_step4.png "Click Install")
 
 
-If you uncomfortable about the Tampermonkey plugin. See the [Bookmarklet instructions](./bookmarklet.html).
+If you're uncomfortable with the Tampermonkey plugin. See the [Bookmarklet instructions](./bookmarklet.html).
 
 [back](./)
