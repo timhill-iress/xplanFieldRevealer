@@ -78,7 +78,7 @@
     function divFormatter(help) {
         var helpHtml = "";
         help.forEach(function (h) {
-            helpHtml += "<div><span class='xfr-title'>" + h.title + ":</span><span class='xfr-value'>" + h.value + "</span></div>";
+            helpHtml += "<div><span class='xfr-title'>" + h.title + ": </span><span class='xfr-value'>" + h.value + "</span></div>";
         });
         return helpHtml;
     }
