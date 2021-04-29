@@ -38,6 +38,10 @@
     margin-bottom: 5px;
 }
 
+.xplan-field-revealer-hidden{
+    display:none;
+}
+
 .xfr-title{
     font-weight: bold;
 }
