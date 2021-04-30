@@ -45,27 +45,12 @@
         //input names are often 'entity:policy_owner:0:', in this case policy_owner is the internal xplan field name
         var nameParts = name.split(":");
         if (nameParts.length > 1) {
-            var help = [];
-            try{
-                var tooltip = el.dataset.orgTitle;
-                if (typeof tooltip == "undefined") {
-                    tooltip = el.title;
-                }
-                if (tooltip) {
-                    //When the tooltip starts with a '[' e.g. '[Insurance Group] Policy Owner' this is how the field appears in Xport
-                    var title = tooltip.startsWith("[") ? "Xport fieldname" : "Description";
-                    help.push({ title: title, value: tooltip });
-                }
-            }catch(err){
-                console.log(err);
-            }
             help.push({ title: "Groupname", value: groupName });
             //The internal field name is used by both Xmerge and the RAPI
             help.push({ title: "RAPI / Xmerge fieldname", value: nameParts[1] });
-        }else{
-            //The input field name may be of some help
-            help.push({ title: "HTML fieldname", value: name });
         }
+        //The input field name may be of some help
+        help.push({ title: "HTML fieldname", value: name });
         return help;
 
     }
