@@ -1,15 +1,16 @@
 {
   "name": "xplanfieldrevealer",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build-css": "node ./node_modules/css-minify/bin/css-minify.js --file src/xplanFieldRevealer.css",
     "embed-css": "node ./build/embedCss.js",
+    "embed-version": "node ./build/embedVersion.js",
     "build-dev-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js src/dev-bookmarklet.js ./dist/dev-bookmarklet.html --demo",
     "build-prod-bookmarklet": "node ./node_modules/bookmarklet/bin/cli.js src/prod-bookmarklet.js --demo  ./dist/prod-bookmarklet.html",
     "build-bookmarklets": "npm run build-dev-bookmarklet && npm run build-prod-bookmarklet",
-    "build": "npm run build-css && npm run embed-css && npm run build-bookmarklets"
+    "build": "npm run build-css && npm run embed-css && npm run embed-version && npm run build-bookmarklets"
   },
   "author": "Tim Hill",
   "license": "ISC",

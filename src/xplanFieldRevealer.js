@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name         Xplan Field Revealor
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      {version}
 // @description  Helps Xplan user determine the xplan field names. This is useful when using the API or Xmerge
 // @author       Tim Hill
+// @homepage     https://timhill-iress.github.io/xplanFieldRevealer/index.html
+// @supportURL   https://github.com/timhill-iress/xplanFieldRevealer/issues
 // @match        https://*.xplan.iress.co.uk/*
 // @match        https://timhilltest.xplan.aws-wealth-staging-uk.iress.online/*
 // @downloadURL  https://raw.githack.com/timhill-iress/xplanFieldRevealer/master/dist/xplanFieldRevealer.js
@@ -25,6 +27,21 @@
 
     function createFieldDetails(groupName, el) {
         var name = el.name;
+        var help = [];
+        try{
+            var tooltip = el.dataset.orgTitle;
+            if (typeof tooltip == "undefined") {
+                tooltip = el.title;
+            }
+            if (tooltip) {
+                //When the tooltip starts with a '[' e.g. '[Insurance Group] Policy Owner' this is how the field appears in Xport
+                var title = tooltip.startsWith("[") ? "Xport fieldname" : "Description";
+                help.push({ title: title, value: tooltip });
+            }
+        }catch(err){
+            console.log(err);
+        }
+
         //input names are often 'entity:policy_owner:0:', in this case policy_owner is the internal xplan field name
         var nameParts = name.split(":");
         if (nameParts.length > 1) {
@@ -45,9 +62,12 @@
             help.push({ title: "Groupname", value: groupName });
             //The internal field name is used by both Xmerge and the RAPI
             help.push({ title: "RAPI / Xmerge fieldname", value: nameParts[1] });
-
-            return help;
+        }else{
+            //The input field name may be of some help
+            help.push({ title: "HTML fieldname", value: name });
         }
+        return help;
+
     }
 
     function findGroupName(el) {
@@ -96,7 +116,7 @@
         var footerEl = document.createElement('div');
         footerEl.className = "xplan-field-revealer";
         mainEl.appendChild(footerEl);
-        footerEl.insertAdjacentHTML('beforeend','<p>Xplan Field Revealer:</p>');
+        footerEl.insertAdjacentHTML('beforeend','<p>Xplan Field Revealer(v{version}):</p>');
 
 
         var selected = document.querySelectorAll("select,input,textarea");
