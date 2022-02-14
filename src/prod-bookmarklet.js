@@ -1,5 +1,5 @@
 // ==Bookmarklet==
 // @name Xplan Field Revealer
 // @author Tim Hill
-// @script https://raw.githack.com/timhill-iress/xplanFieldRevealer/master/dist/xplanFieldRevealer.js
+// @script https://cdn.jsdelivr.net/gh/timhill-iress/xplanFieldRevealer@master/dist/xplanFieldRevealer.js
 // ==/Bookmarklet==

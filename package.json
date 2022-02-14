@@ -16,6 +16,6 @@
   "license": "ISC",
   "devDependencies": {
     "bookmarklet": "^3.0.0",
-    "css-minify": "^1.1.0"
+    "css-minify": "^2.0.0"
   }
 }

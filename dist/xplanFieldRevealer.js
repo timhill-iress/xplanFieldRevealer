@@ -17,7 +17,7 @@
 
     function addStyle() {
         var css = document.createElement('style');
-        var styles = ".xplan-field-revealer .bubble{display:inline-block;position:relative;padding:5px;background:#ffa;border:#2b2929 solid 1px}.xplan-field-revealer .bubble:after{content:'';position:absolute;border-style:solid;border-width:0 10px 10px;border-color:#ffa transparent;display:block;width:0;z-index:1;top:-10px}.xplan-field-revealer .bubble:before{content:'';position:absolute;border-style:solid;border-width:0 10px 10px;border-color:#2b2929 transparent;display:block;width:0;z-index:0;top:-11px}.xplan-field-revealer{margin-top:10px;margin-bottom:5px}.xplan-field-revealer-hidden{display:none}.xfr-title{font-weight:bold}.xfr-value{}";
+        var styles = ".xplan-field-revealer .bubble{background:#ffa;border:1px solid #2b2929;display:inline-block;padding:5px;position:relative}.xplan-field-revealer .bubble:after{border-color:#ffa transparent;top:-10px;z-index:1}.xplan-field-revealer .bubble:after,.xplan-field-revealer .bubble:before{border-style:solid;border-width:0 10px 10px;content:"";display:block;position:absolute;width:0}.xplan-field-revealer .bubble:before{border-color:#2b2929 transparent;top:-11px;z-index:0}.xplan-field-revealer{margin-bottom:5px;margin-top:10px}.xplan-field-revealer-hidden{display:none}.xfr-title{font-weight:700}";
         if (css.styleSheet) css.styleSheet.cssText = styles;
         else css.appendChild(document.createTextNode(styles));
 
