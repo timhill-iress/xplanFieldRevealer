@@ -136,7 +136,11 @@
         }
     }
 
-    console.info("Starting")
-    addStyle();
-    addDivs(false);
+    try {
+        console.info("Starting")
+        addStyle();
+        addDivs(false);
+    } catch (error) {
+        console.error(error)
+    }
 })();
