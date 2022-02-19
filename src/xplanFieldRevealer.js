@@ -8,7 +8,7 @@
 // @supportURL   https://github.com/timhill-iress/xplanFieldRevealer/issues
 // @match        https://*.xplan.iress.co.uk/*
 // @match        https://timhilltest.xplan.aws-wealth-staging-uk.iress.online/*
-// @downloadURL  https://raw.githack.com/timhill-iress/xplanFieldRevealer/master/dist/xplanFieldRevealer.js
+// @downloadURL  https://cdn.jsdelivr.net/gh/timhill-iress/xplanFieldRevealer/dist/xplanFieldRevealer.js
 // @grant        none
 // ==/UserScript==
 
@@ -17,7 +17,7 @@
 
     function addStyle() {
         var css = document.createElement('style');
-        var styles = "{css}";
+        var styles = '{css}';
         if (css.styleSheet) css.styleSheet.cssText = styles;
         else css.appendChild(document.createTextNode(styles));
 

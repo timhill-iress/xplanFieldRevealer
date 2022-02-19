@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Xplan Field Revealor
 // @namespace    http://tampermonkey.net/
-// @version      1.0.4
+// @version      1.0.5
 // @description  Helps Xplan user determine the xplan field names. This is useful when using the API or Xmerge
 // @author       Tim Hill
 // @homepage     https://timhill-iress.github.io/xplanFieldRevealer/index.html
 // @supportURL   https://github.com/timhill-iress/xplanFieldRevealer/issues
 // @match        https://*.xplan.iress.co.uk/*
 // @match        https://timhilltest.xplan.aws-wealth-staging-uk.iress.online/*
-// @downloadURL  https://raw.githack.com/timhill-iress/xplanFieldRevealer/master/dist/xplanFieldRevealer.js
+// @downloadURL  https://cdn.jsdelivr.net/gh/timhill-iress/xplanFieldRevealer/dist/xplanFieldRevealer.js
 // @grant        none
 // ==/UserScript==
 
