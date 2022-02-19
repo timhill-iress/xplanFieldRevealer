@@ -14,7 +14,7 @@
 
 (function () {
     'use strict';
-    console.timeLog("XFR loading");
+    console.info("XFR loading");
 
     function addStyle() {
         console.info("XFR addstyle");
