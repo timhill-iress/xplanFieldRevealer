@@ -8,7 +8,7 @@
 // @supportURL   https://github.com/timhill-iress/xplanFieldRevealer/issues
 // @match        https://*.xplan.iress.co.uk/*
 // @match        https://timhilltest.xplan.aws-wealth-staging-uk.iress.online/*
-// @downloadURL  https://cdn.jsdelivr.net/gh/timhill-iress/xplanFieldRevealer/dist/xplanFieldRevealer.js
+// @downloadURL  https://cdn.jsdelivr.net/gh/timhill-iress/xplanFieldRevealer/dist/xplanFieldRevealer.min.js
 // @grant        none
 // ==/UserScript==
 
