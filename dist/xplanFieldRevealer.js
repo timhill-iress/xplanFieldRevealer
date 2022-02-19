@@ -14,8 +14,10 @@
 
 (function () {
     'use strict';
+    console.timeLog("XFR loading");
 
     function addStyle() {
+        console.info("XFR addstyle");
         var css = document.createElement('style');
         var styles = ".xplan-field-revealer .bubble{background:#ffa;border:1px solid #2b2929;display:inline-block;padding:5px;position:relative}.xplan-field-revealer .bubble:after{border-color:#ffa transparent;top:-10px;z-index:1}.xplan-field-revealer .bubble:after,.xplan-field-revealer .bubble:before{border-style:solid;border-width:0 10px 10px;content:"";display:block;position:absolute;width:0}.xplan-field-revealer .bubble:before{border-color:#2b2929 transparent;top:-11px;z-index:0}.xplan-field-revealer{margin-bottom:5px;margin-top:10px}.xplan-field-revealer-hidden{display:none}.xfr-title{font-weight:700}";
         if (css.styleSheet) css.styleSheet.cssText = styles;
@@ -26,6 +28,7 @@
     }
 
     function createFieldDetails(groupName, el) {
+        console.info("XFR createFieldDetails", groupName);
         var name = el.name;
         var help = [];
         try{
@@ -96,6 +99,8 @@
     }
 
     function addDivs(showHidden) {
+        console.info("XFR addDivs", showHidden);
+
         document.querySelectorAll("div.xplan-field-revealer").forEach( x => x.remove());
         var mainEl = document.querySelector("#pagecontent") || document.body;
         var footerEl = document.createElement('div');
@@ -131,6 +136,7 @@
         }
     }
 
+    console.info("Starting")
     addStyle();
     addDivs(false);
 })();
