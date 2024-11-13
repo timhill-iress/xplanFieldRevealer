@@ -1,49 +1,57 @@
-.xplan-field-revealer .bubble
-{
-   display: inline-block;
-   position: relative;
-   padding: 5px;
-   background: #ffffaa;
-   border: #2b2929 solid 1px;
+/* Bubble styling */
+.xplan-field-revealer .bubble {
+    background: #f5f5f5;
+    /* Light gray for a softer look */
+    border: 3px solid #3c1e46;
+    /* Coral: #ff425e */
+    color: #3c1e46;
+    display: inline-block;
+    padding: 10px 15px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.xplan-field-revealer .bubble:after
-{
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 0 10px 10px;
-    border-color: #ffffaa transparent;
-    display: block;
-    width: 0;
+/* Inner arrow (lighter color) */
+.xplan-field-revealer .bubble:after {
+    border-color: #f5f5f5 transparent;
+    top: -07px;
     z-index: 1;
-    top: -10px;
 }
 
-.xplan-field-revealer .bubble:before
-{
-    content: '';
-    position: absolute;
+/* Bubble arrow styling */
+.xplan-field-revealer .bubble:after,
+.xplan-field-revealer .bubble:before {
     border-style: solid;
     border-width: 0 10px 10px;
-    border-color: #2b2929 transparent;
+    content: "";
     display: block;
+    position: absolute;
     width: 0;
+}
+
+/* Outer arrow (darker border color) */
+.xplan-field-revealer .bubble:before {
+    border-color: #3c1e46 transparent;
+    /* Coral: #ff425e */
+    top: -10px;
     z-index: 0;
-    top: -11px;
 }
 
-.xplan-field-revealer{
-    margin-top: 10px;
+.xplan-field-revealer {
     margin-bottom: 5px;
+    margin-top: 10px;
+
 }
 
-.xplan-field-revealer-hidden{
-    display:none;
+.xplan-field-revealer-hidden {
+    display: none;
 }
 
-.xfr-title{
-    font-weight: bold;
+.xfr-title {
+    font-weight: 700;
 }
-.xfr-value{
+
+.xfr-value-rapi {
+    color:#ff425e
 }
