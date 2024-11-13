@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Xplan Field Revealor
 // @namespace    http://tampermonkey.net/
-// @version      1.0.5
+// @version      1.0.4
 // @description  Helps Xplan user determine the xplan field names. This is useful when using the API or Xmerge
 // @author       Tim Hill
 // @homepage     https://timhill-iress.github.io/xplanFieldRevealer/index.html
@@ -14,12 +14,10 @@
 
 (function () {
     'use strict';
-    console.info("XFR loading");
 
     function addStyle() {
-        console.info("XFR addstyle");
-        var css = document.createElement('style');
-        var styles = '.xplan-field-revealer .bubble{background:#ffa;border:1px solid #2b2929;display:inline-block;padding:5px;position:relative}.xplan-field-revealer .bubble:after{border-color:#ffa transparent;top:-10px;z-index:1}.xplan-field-revealer .bubble:after,.xplan-field-revealer .bubble:before{border-style:solid;border-width:0 10px 10px;content:"";display:block;position:absolute;width:0}.xplan-field-revealer .bubble:before{border-color:#2b2929 transparent;top:-11px;z-index:0}.xplan-field-revealer{margin-bottom:5px;margin-top:10px}.xplan-field-revealer-hidden{display:none}.xfr-title{font-weight:700}';
+        let css = document.createElement('style');
+        let styles = '.xplan-field-revealer .bubble{background:#f5f5f5;border:3px solid #3c1e46;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);color:#3c1e46;display:inline-block;padding:10px 15px;position:relative}.xplan-field-revealer .bubble:after{border-color:#f5f5f5 transparent;top:-7px;z-index:1}.xplan-field-revealer .bubble:after,.xplan-field-revealer .bubble:before{border-style:solid;border-width:0 10px 10px;content:"";display:block;position:absolute;width:0}.xplan-field-revealer .bubble:before{border-color:#3c1e46 transparent;top:-10px;z-index:0}.xplan-field-revealer{margin-bottom:5px;margin-top:10px}.xplan-field-revealer-hidden{display:none}.xfr-title{font-weight:700}.xfr-value-rapi{color:#ff425e}';
         if (css.styleSheet) css.styleSheet.cssText = styles;
         else css.appendChild(document.createTextNode(styles));
 
@@ -28,44 +26,43 @@
     }
 
     function createFieldDetails(groupName, el) {
-        console.info("XFR createFieldDetails", groupName);
-        var name = el.name;
-        var help = [];
+        let name = el.name;
+        let help = [];
         try{
-            var tooltip = el.dataset.orgTitle;
+            let tooltip = el.dataset.orgTitle;
             if (typeof tooltip == "undefined") {
                 tooltip = el.title;
             }
             if (tooltip) {
                 //When the tooltip starts with a '[' e.g. '[Insurance Group] Policy Owner' this is how the field appears in Xport
-                var title = tooltip.startsWith("[") ? "Xport fieldname" : "Description";
-                help.push({ title: title, value: tooltip });
+                let title = tooltip.startsWith("[") ? "Xport fieldname" : "Description";
+                help.push({ title: title, value: tooltip, type: "desc" });
             }
         }catch(err){
             console.log(err);
         }
 
         //input names are often 'entity:policy_owner:0:', in this case policy_owner is the internal xplan field name
-        var nameParts = name.split(":");
+        let nameParts = name.split(":");
         if (nameParts.length > 1) {
-            help.push({ title: "Groupname", value: groupName });
+            help.push({ title: "Groupname", value: groupName, type: "group" });
             //The internal field name is used by both Xmerge and the RAPI
-            help.push({ title: "RAPI / Xmerge fieldname", value: nameParts[1] });
+            help.push({ title: "RAPI / Xmerge fieldname", value: nameParts[1], type: "rapi" });
         }
         //The input field name may be of some help
-        help.push({ title: "HTML fieldname", value: name });
+        help.push({ title: "HTML fieldname", value: name, type: "html" });
         return help;
 
     }
 
     function findGroupName(el) {
         //Find parent form
-        var form = el.form;
-        var name = null;
+        let form = el.form;
+        let name = null;
         //Various ways to guess at the groupname
         //look for a hidden field with name list_name
         if (form) {
-            var listName = form.querySelector("input[name=list_name]");
+            let listName = form.querySelector("input[name=list_name]");
             if (!listName) {
                 if (form.name == "editclient") {
                     name = "entity"
@@ -73,7 +70,7 @@
             }else{
                 name = listName.value;
             }
-            var groupName = form.querySelector("input[name=group_name]");
+            let groupName = form.querySelector("input[name=group_name]");
             if( groupName && name){
                 name += "_" + groupName.value;
             }
@@ -87,9 +84,9 @@
 
 
     function divFormatter(help) {
-        var helpHtml = "";
+        let helpHtml = "";
         help.forEach(function (h) {
-            helpHtml += `<div><span class='xfr-title'>${h.title}: </span><span class='xfr-value'>${h.value}</span></div>`;
+            helpHtml += `<div><span class='xfr-title'>${h.title}: </span><span class='xfr-value-${h.type}'>${h.value}</span></div>`;
         });
         return helpHtml;
     }
@@ -99,24 +96,22 @@
     }
 
     function addDivs(showHidden) {
-        console.info("XFR addDivs", showHidden);
-
         document.querySelectorAll("div.xplan-field-revealer").forEach( x => x.remove());
-        var mainEl = document.querySelector("#pagecontent") || document.body;
-        var footerEl = document.createElement('div');
+        let mainEl = document.querySelector("#pagecontent") || document.body;
+        let footerEl = document.createElement('div');
         footerEl.className = "xplan-field-revealer";
         mainEl.appendChild(footerEl);
         footerEl.insertAdjacentHTML('beforeend','<p>Xplan Field Revealer(v1.0.4):</p>');
 
 
-        var selected = document.querySelectorAll("select,input,textarea");
-        var hiddenCount = 0;
+        let selected = document.querySelectorAll("select,input,textarea");
+        let hiddenCount = 0;
         selected.forEach(
             function (el) {
-                var groupName = findGroupName(el);
-                var help = createFieldDetails(groupName, el);
+                let groupName = findGroupName(el);
+                let help = createFieldDetails(groupName, el);
                 if (help) {
-                    var style = 'xplan-field-revealer';
+                    let style = 'xplan-field-revealer';
                     if( isHidden(el)){
                         if( !showHidden){
                             hiddenCount++;
@@ -129,18 +124,13 @@
         );
         footerEl.insertAdjacentHTML('beforeend',`Found ${selected.length} fields, ${hiddenCount} are hidden.</p>`);
         if( hiddenCount > 0){
-            var showHiddenEl = document.createElement('a');
+            let showHiddenEl = document.createElement('a');
             showHiddenEl.appendChild(document.createTextNode('show hidden.'));
             showHiddenEl.addEventListener('click', x => addDivs(true));
             footerEl.appendChild(showHiddenEl);
         }
     }
 
-    try {
-        console.info("Starting")
-        addStyle();
-        addDivs(false);
-    } catch (error) {
-        console.error(error)
-    }
+    addStyle();
+    addDivs(false);
 })();
