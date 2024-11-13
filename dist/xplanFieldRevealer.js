@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Xplan Field Revealor
 // @namespace    http://tampermonkey.net/
-// @version      1.0.4
+// @version      1.0.6
 // @description  Helps Xplan user determine the xplan field names. This is useful when using the API or Xmerge
 // @author       Tim Hill
 // @homepage     https://timhill-iress.github.io/xplanFieldRevealer/index.html
@@ -101,7 +101,7 @@
         let footerEl = document.createElement('div');
         footerEl.className = "xplan-field-revealer";
         mainEl.appendChild(footerEl);
-        footerEl.insertAdjacentHTML('beforeend','<p>Xplan Field Revealer(v1.0.4):</p>');
+        footerEl.insertAdjacentHTML('beforeend','<p>Xplan Field Revealer(v1.0.6):</p>');
 
 
         let selected = document.querySelectorAll("select,input,textarea");
